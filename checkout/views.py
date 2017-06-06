@@ -3,10 +3,24 @@ from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.conf import settings
+import stripe
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def checkout(request):
-    context = {}
+    publishKey = settings.STRIPE_PUBLISHABLE_KEY
+    if request.method == 'POST':
+        token = request.POST['stripeToken']
+        try:
+            charge = stripe.Charge.create(
+                amount=1000,
+                currency="usd",
+                source=token,
+                description="example charge"
+            )
+        except stripe.error.CardError as e:
+            pass
+    context = {'publishKey':publishKey}
     template = 'checkout.html'
     return render(request,template,context)
