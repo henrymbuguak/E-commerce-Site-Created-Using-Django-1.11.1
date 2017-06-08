@@ -29,6 +29,7 @@ class userStripe(models.Model):
         else:
             return self.user.username
 
+"""
 def my_callback(sender,request,user, **kwargs):
     idStripe, created = userStripe.objects.get_or_create(user=user)
     if created:
@@ -38,6 +39,7 @@ def my_callback(sender,request,user, **kwargs):
     if is_created:
         userProfile.name = user.username
         userProfile.save()
+"""
 
 
 def stripeCallback(sender, request, user, **kwargs):
