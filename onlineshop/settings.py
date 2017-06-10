@@ -16,8 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'henrymbuguak@gmail.com'
-EMAIL_HOST_PASSWORD = '3918km1990hmk'
+EMAIL_HOST_USER = 'youremail@gmail.com' #This is going to be used to send emails
+EMAIL_HOST_PASSWORD = 'yourpassword'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
